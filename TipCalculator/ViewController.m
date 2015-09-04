@@ -10,6 +10,10 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) IBOutlet UITextField *billAmountTextField;
+@property (strong, nonatomic) IBOutlet UITextField *tipPercentageTextField;
+@property (strong, nonatomic) IBOutlet UILabel *tipAmountLabel;
+
 @end
 
 @implementation ViewController
@@ -22,6 +26,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)calculateTip:(id)sender {
+    
 }
 
 @end
