@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *billAmountTextField;
 @property (strong, nonatomic) IBOutlet UILabel *tipAmountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *tipPercentageLabel;
+@property (strong, nonatomic) IBOutlet UISlider *tipPercentageSlider;
 
 @end
 
@@ -34,7 +35,15 @@
     float tip = bill * sender.value/100;
     NSString *tipFormatted = [NSString stringWithFormat:@"%.02f", tip];
     self.tipAmountLabel.text = [@"$" stringByAppendingString:tipFormatted];
-    self.tipPercentageLabel.text = [[NSString stringWithFormat:@"%f", sender.value] stringByAppendingString:@"%"];
+    self.tipPercentageLabel.text = [[NSString stringWithFormat:@"%.0f", sender.value] stringByAppendingString:@"%"];
+}
+
+- (IBAction)typeBillAmount:(UITextField *)sender {
+    float bill = [sender.text floatValue];
+    
+    float tip = bill * self.tipPercentageSlider.value/100;
+    NSString *tipFormatted = [NSString stringWithFormat:@"%.02f", tip];
+    self.tipAmountLabel.text = [@"$" stringByAppendingString:tipFormatted];
 }
 
 @end
