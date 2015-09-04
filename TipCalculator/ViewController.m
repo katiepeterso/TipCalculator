@@ -30,6 +30,11 @@
 
 - (IBAction)calculateTip:(id)sender {
     
+    float bill = [self.billAmountTextField.text floatValue];
+    float tip = bill * 0.15;
+    NSString *tipFormatted = [NSString stringWithFormat:@"%.02f", tip];
+    self.tipAmountLabel.text = [@"$" stringByAppendingString:tipFormatted];
+    
 }
 
 @end
