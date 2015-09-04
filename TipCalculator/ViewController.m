@@ -11,8 +11,8 @@
 @interface ViewController ()
 
 @property (strong, nonatomic) IBOutlet UITextField *billAmountTextField;
-@property (strong, nonatomic) IBOutlet UITextField *tipPercentageTextField;
 @property (strong, nonatomic) IBOutlet UILabel *tipAmountLabel;
+@property (strong, nonatomic) IBOutlet UILabel *tipPercentageLabel;
 
 @end
 
@@ -28,13 +28,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)calculateTip:(id)sender {
-    
+- (IBAction)chooseTipPercent:(UISlider *)sender {
     float bill = [self.billAmountTextField.text floatValue];
-    float tip = bill * 0.15;
+    
+    float tip = bill * sender.value/100;
     NSString *tipFormatted = [NSString stringWithFormat:@"%.02f", tip];
     self.tipAmountLabel.text = [@"$" stringByAppendingString:tipFormatted];
-    
+    self.tipPercentageLabel.text = [[NSString stringWithFormat:@"%f", sender.value] stringByAppendingString:@"%"];
 }
 
 @end
